@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyHomePage(title: 'Explore the world'),
-        '/destinos': (context) => SecondPage()
+        '/destinos': (context) => const Destinos(),
+        '/contatos': (context) => const Contatos(),
       },
     );
   }
@@ -50,8 +51,11 @@ class MyHomePage extends StatelessWidget {
             ),
             ListTile(
               leading: const Icon(Icons.contact_phone),
-              title: const Text('Contato'),
-              onTap: () {},
+              title: const Text('Contatos'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/contatos');
+              },
             ),
             ListTile(
               leading: const Icon(Icons.person),
@@ -79,18 +83,63 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class SecondPage extends StatelessWidget {
+class Destinos extends StatelessWidget {
+  // Constructor
+  const Destinos({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Second Page')),
+      appBar: AppBar(title: const Text('Second Page')),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text('Back to Home Page'),
+          child: const Text('Back to Home Page'),
         ),
+      ),
+    );
+  }
+}
+
+class Contatos extends StatelessWidget {
+  const Contatos({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Contato')),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <ListTile>[
+            ListTile(
+              title: Column(children:<Widget>[
+                Icon(Icons.phone_android, size: 60),
+                Text('Telefone', style: TextStyle(fontSize: 24)),
+                Text('(85) 90808-0808', style: TextStyle(fontSize: 12),),
+              ]),
+            ),
+
+            ListTile(
+              title: Column(children:<Widget>[
+                Icon(Icons.email, size: 60),
+                Text('Email', style: TextStyle(fontSize: 24)),
+                Text('exploretheworld@email.com', style: TextStyle(fontSize: 12),),
+              ]),
+            ),
+
+            ListTile(
+              title: Column(children:<Widget>[
+                Icon(Icons.message, size: 60),
+                Text('Whatssap', style: TextStyle(fontSize: 24)),
+                Text('(85) 90808-0808', style: TextStyle(fontSize: 12),),
+              ]),
+            ),
+          
+          ]
+        )
       ),
     );
   }
