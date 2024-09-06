@@ -47,7 +47,10 @@ class MyHomePage extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.airplane_ticket),
               title: const Text('Pacotes de viagem'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/pacotes');
+              },
             ),
             ListTile(
               leading: const Icon(Icons.contact_phone),
@@ -65,17 +68,26 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: const Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('Bem vindo a Explore the world'),
-              Text(
-                'Somos a maior plataforma de pacotes de viagens para ajudar a voce a escolher um destino',
-              ),
-            ]),
+      body: Container(
+        alignment: Alignment.topCenter,
+        padding: const EdgeInsets.all(20),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/HomePageImage.jpg'),
+                fit: BoxFit.cover)),
+        child: SizedBox(
+          width: 300,
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(138, 104, 68, 223),
+            ),
+            onPressed: () {
+            Navigator.pop(context);
+            Navigator.pushNamed(context, '/destinos');
+          },
+          child: const Text('Explorar destinos ', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),)),
+          ),
       ),
 
       // This trailing comma makes auto-formatting nicer for build methods.
@@ -111,36 +123,40 @@ class Contatos extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Contato')),
       body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <ListTile>[
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <ListTile>[
             ListTile(
-              title: Column(children:<Widget>[
+              title: Column(children: <Widget>[
                 Icon(Icons.phone_android, size: 60),
                 Text('Telefone', style: TextStyle(fontSize: 24)),
-                Text('(85) 90808-0808', style: TextStyle(fontSize: 12),),
+                Text(
+                  '(85) 90808-0808',
+                  style: TextStyle(fontSize: 12),
+                ),
               ]),
             ),
-
             ListTile(
-              title: Column(children:<Widget>[
+              title: Column(children: <Widget>[
                 Icon(Icons.email, size: 60),
                 Text('Email', style: TextStyle(fontSize: 24)),
-                Text('exploretheworld@email.com', style: TextStyle(fontSize: 12),),
+                Text(
+                  'exploretheworld@email.com',
+                  style: TextStyle(fontSize: 12),
+                ),
               ]),
             ),
-
             ListTile(
-              title: Column(children:<Widget>[
+              title: Column(children: <Widget>[
                 Icon(Icons.message, size: 60),
                 Text('Whatssap', style: TextStyle(fontSize: 24)),
-                Text('(85) 90808-0808', style: TextStyle(fontSize: 12),),
+                Text(
+                  '(85) 90808-0808',
+                  style: TextStyle(fontSize: 12),
+                ),
               ]),
             ),
-          
-          ]
-        )
-      ),
+          ])),
     );
   }
 }
