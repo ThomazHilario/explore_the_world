@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(const MyApp());
@@ -204,7 +205,45 @@ class DetalhesDestinosPage extends StatelessWidget {
         title: Text(titleDestino),
       ),
       body: Center(
-        child: Text(sobre),
+        child: Column(
+          children: [
+            Image.asset(url, fit: BoxFit.cover, height:250),
+            Container(
+              margin: const EdgeInsets.all(20),
+              child: const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      Icon(Icons.call, size: 30),
+                      Text('Call')
+                    ],
+                  ),
+                  
+                  Column(
+                    children: [
+                      Icon(Icons.gps_fixed, size: 30),
+                      Text('Route')
+                    ],
+                  ),
+
+                  Column(
+                    children:[
+                      Icon(Icons.share, size: 30),
+                      Text('Share')
+                    ]
+                  )
+                ],
+              ),
+            ),
+            
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Text(sobre, textAlign: TextAlign.justify),
+            )
+          ],
+        ),
+        
       ),
     );
   }
