@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MyHomePage(title: 'Explore the world'),
         '/destinos': (context) => const Destinos(),
         '/contatos': (context) => const Contatos(),
+        '/sobre': (context) => const Sobre(),
       },
     );
   }
@@ -65,7 +66,10 @@ class MyHomePage extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('Sobre nos'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/sobre');
+              },
             )
           ],
         ),
@@ -111,8 +115,11 @@ class Destinos extends StatelessWidget {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) =>
-                DetalhesDestinosPage(url: url,sobre: sobre,titleDestino: titleDestino,),
+            builder: (BuildContext context) => DetalhesDestinosPage(
+              url: url,
+              sobre: sobre,
+              titleDestino: titleDestino,
+            ),
           ));
     }
 
@@ -207,43 +214,106 @@ class DetalhesDestinosPage extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Image.asset(url, fit: BoxFit.cover, height:250),
+            Image.asset(url, fit: BoxFit.cover, height: 250),
             Container(
               margin: const EdgeInsets.all(20),
               child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
-                    children: [
-                      Icon(Icons.call, size: 30),
-                      Text('Call')
-                    ],
+                    children: [Icon(Icons.call, size: 30), Text('Call')],
                   ),
-                  
                   Column(
-                    children: [
-                      Icon(Icons.gps_fixed, size: 30),
-                      Text('Route')
-                    ],
+                    children: [Icon(Icons.gps_fixed, size: 30), Text('Route')],
                   ),
-
-                  Column(
-                    children:[
-                      Icon(Icons.share, size: 30),
-                      Text('Share')
-                    ]
-                  )
+                  Column(children: [Icon(Icons.share, size: 30), Text('Share')])
                 ],
               ),
             ),
-            
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(sobre, textAlign: TextAlign.justify),
             )
           ],
         ),
-        
+      ),
+    );
+  }
+}
+
+class Sobre extends StatelessWidget {
+  const Sobre({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sobre nos'),
+      ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        alignment: Alignment.topCenter,
+        child: Column(
+          children: [
+            const Text('Quem somos nos ?', style: TextStyle(
+              fontSize: 30
+            )),
+
+            const Text('Somos a maior agência de viagens do mundo. Oferecemos ofertas que cabem no seu bolso em até 24x sem juros.', textAlign: TextAlign.justify),
+            
+            Padding(
+              padding: const EdgeInsets.all(30),
+              child: Center(
+                child: Column(      
+                  children: <Widget>[         
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
+                        width: 300,
+                        child: ElevatedButton(
+                          child: const Text('Destino'),
+                          onPressed: (){
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/destinos');
+                          },
+                        ),
+                      )
+                    ),
+                    
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
+                        width: 300,
+                        child: ElevatedButton(
+                          child: const Text('Pacotes'),
+                          onPressed: (){
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/pacotes');
+                          },
+                        ),
+                      )
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
+                        width:300,
+                        child: ElevatedButton(
+                          child: const Text('Contatos'),
+                          onPressed: (){
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/contatos');
+                          },
+                        ),
+                      )
+                    )
+                  ],
+                ),
+              ), 
+            )
+          ],
+        ),
       ),
     );
   }
