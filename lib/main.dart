@@ -1,5 +1,15 @@
+import 'package:explore_the_world/Pacotes/pacotes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
+// page sobre
+import 'package:explore_the_world/Sobre/sobre.dart';
+
+// Page Destinos
+import 'package:explore_the_world/Destinos/destinos.dart';
+
+// page contatos
+import 'package:explore_the_world/Contatos/contatos.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/destinos': (context) => const Destinos(),
         '/contatos': (context) => const Contatos(),
         '/sobre': (context) => const Sobre(),
+        '/pacotes': (context) => const Pacotes(),
       },
     );
   }
@@ -99,222 +110,6 @@ class MyHomePage extends StatelessWidget {
       ),
 
       // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-// Destinos Page
-class Destinos extends StatelessWidget {
-  // Constructor
-  const Destinos({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Mostar detalhes
-    mostrarDetalhes(String url, String titleDestino, String sobre) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => DetalhesDestinosPage(
-              url: url,
-              sobre: sobre,
-              titleDestino: titleDestino,
-            ),
-          ));
-    }
-
-    return Scaffold(
-      appBar: AppBar(title: const Text('Destinos')),
-      body: ListView(children: <ListTile>[
-        ListTile(
-          leading: const CircleAvatar(
-            backgroundImage: AssetImage('images/londres.jpg'),
-          ),
-          title: const Text('Londres'),
-          onTap: () => mostrarDetalhes('images/londres.jpg', 'Londres',
-              'Londres, capital da Inglaterra e do Reino Unido, é uma cidade do século 21 com uma história que remonta à era romana. Seu centro abriga as sedes imponentes do Parlamento, a famosa torre do relógio do Big Ben e a Abadia de Westminster, local de coroação dos monarcas britânicos. Do outro lado do rio Tâmisa, a roda gigante London Eye tem vista panorâmica do complexo cultural da margem sul e de toda a cidade.'),
-        ),
-        ListTile(
-          leading: const CircleAvatar(
-            backgroundImage: AssetImage('images/odaiba.jpg'),
-          ),
-          title: const Text('Odaiba'),
-          onTap: () => mostrarDetalhes('images/odaiba.jpg', 'Odaiba',
-              'Acessado pela Rainbow Bridge ou pelo trem Yurikamome futurista, Odaiba é um centro de entretenimento de alta tecnologia em uma ilha artificial na Baía de Tóquio. Os visitantes vão até a praia no Parque Seaside, aproveitam as vistas do Monte Fuji pela Roda-gigante Daikanransha e interagem com robôs no museu de ciências Miraikan. Os shopping centers incluem o Aqua City e o VenusFort, com temática de Veneza, e há bares de sushi com vista para a orla.'),
-        )
-      ]),
-    );
-  }
-}
-
-// Contatos Page
-class Contatos extends StatelessWidget {
-  const Contatos({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Contato')),
-      body: const Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <ListTile>[
-            ListTile(
-              title: Column(children: <Widget>[
-                Icon(Icons.phone_android, size: 60),
-                Text('Telefone', style: TextStyle(fontSize: 24)),
-                Text(
-                  '(85) 90808-0808',
-                  style: TextStyle(fontSize: 12),
-                ),
-              ]),
-            ),
-            ListTile(
-              title: Column(children: <Widget>[
-                Icon(Icons.email, size: 60),
-                Text('Email', style: TextStyle(fontSize: 24)),
-                Text(
-                  'exploretheworld@email.com',
-                  style: TextStyle(fontSize: 12),
-                ),
-              ]),
-            ),
-            ListTile(
-              title: Column(children: <Widget>[
-                Icon(Icons.message, size: 60),
-                Text('Whatssap', style: TextStyle(fontSize: 24)),
-                Text(
-                  '(85) 90808-0808',
-                  style: TextStyle(fontSize: 12),
-                ),
-              ]),
-            ),
-          ])),
-    );
-  }
-}
-
-class DetalhesDestinosPage extends StatelessWidget {
-  final String url;
-  final String titleDestino;
-  final String sobre;
-
-  const DetalhesDestinosPage(
-      {super.key,
-      required this.url,
-      required this.titleDestino,
-      required this.sobre});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(titleDestino),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Image.asset(url, fit: BoxFit.cover, height: 250),
-            Container(
-              margin: const EdgeInsets.all(20),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [Icon(Icons.call, size: 30), Text('Call')],
-                  ),
-                  Column(
-                    children: [Icon(Icons.gps_fixed, size: 30), Text('Route')],
-                  ),
-                  Column(children: [Icon(Icons.share, size: 30), Text('Share')])
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(sobre, textAlign: TextAlign.justify),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Sobre extends StatelessWidget {
-  const Sobre({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sobre nos'),
-      ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        alignment: Alignment.topCenter,
-        child: Column(
-          children: [
-            const Text('Quem somos nos ?', style: TextStyle(
-              fontSize: 30
-            )),
-
-            const Text('Somos a maior agência de viagens do mundo. Oferecemos ofertas que cabem no seu bolso em até 24x sem juros.', textAlign: TextAlign.justify),
-            
-            Padding(
-              padding: const EdgeInsets.all(30),
-              child: Center(
-                child: Column(      
-                  children: <Widget>[         
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: SizedBox(
-                        width: 300,
-                        child: ElevatedButton(
-                          child: const Text('Destino'),
-                          onPressed: (){
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, '/destinos');
-                          },
-                        ),
-                      )
-                    ),
-                    
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: SizedBox(
-                        width: 300,
-                        child: ElevatedButton(
-                          child: const Text('Pacotes'),
-                          onPressed: (){
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, '/pacotes');
-                          },
-                        ),
-                      )
-                    ),
-
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: SizedBox(
-                        width:300,
-                        child: ElevatedButton(
-                          child: const Text('Contatos'),
-                          onPressed: (){
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, '/contatos');
-                          },
-                        ),
-                      )
-                    )
-                  ],
-                ),
-              ), 
-            )
-          ],
-        ),
-      ),
     );
   }
 }
