@@ -49,7 +49,7 @@ class MyHomePage extends StatelessWidget {
       ),
       drawer: Drawer(
         child: ListView(
-          children: <ListTile>[
+          children: [
             ListTile(
               leading: const Icon(Icons.location_on),
               title: const Text('Destinos'),
@@ -81,6 +81,16 @@ class MyHomePage extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/sobre');
               },
+            ),
+            
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: const TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Pesquise aqui....'
+                ),
+              ),
             )
           ],
         ),
