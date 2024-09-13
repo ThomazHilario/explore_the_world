@@ -22,7 +22,7 @@ class Pacotes extends StatelessWidget {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(bottom: 10),
-                    child: Image.asset('images/londres.jpg', fit: BoxFit.fill, height:200, width:MediaQuery.of(context).size.width,)
+                    child: Image.asset('images/londres.jpg', fit: BoxFit.cover, height:150, width:MediaQuery.of(context).size.width,)
                   ),
 
                   const Row(
@@ -38,6 +38,27 @@ class Pacotes extends StatelessWidget {
                       Icon(Icons.star_rate, color: Color.fromRGBO(249, 232, 43, 1)),
                       Icon(Icons.star_rate, color: Color.fromRGBO(249, 232, 43, 1)),
                     ],
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+
+                        child: const Row(
+                          children: [
+                            Icon(Icons.food_bank_outlined),
+                            Icon(Icons.hotel),
+                            Icon(Icons.airplane_ticket)
+                          ],
+                        ),
+                      ),
+
+                      const Text("12x de 3000", style: TextStyle(
+                        fontSize: 25
+                      ),)
+                    ],
                   )
                 ],
               ),
@@ -52,7 +73,7 @@ class Pacotes extends StatelessWidget {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(bottom: 10),
-                    child: Image.asset('images/odaiba.jpg', fit: BoxFit.fill, height:200, width:MediaQuery.of(context).size.width,)
+                    child: Image.asset('images/odaiba.jpg', fit: BoxFit.cover, height:150, width:MediaQuery.of(context).size.width,)
                   ),
 
                   const Row(
@@ -67,6 +88,28 @@ class Pacotes extends StatelessWidget {
                       Icon(Icons.star_rate, color: Color.fromRGBO(249, 232, 43, 1)),
                       Icon(Icons.star_rate, color: Color.fromRGBO(249, 232, 43, 1)),
                       Icon(Icons.star_rate, color: Color.fromRGBO(249, 232, 43, 1)),
+                    ],
+                  ),
+
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+
+                        child: const Row(
+                          children: [
+                            Icon(Icons.food_bank_outlined),
+                            Icon(Icons.hotel),
+                            Icon(Icons.airplane_ticket)
+                          ],
+                        ),
+                      ),
+
+                      const Text("12x de 3000",style: TextStyle(
+                        fontSize: 25
+                      ),)
                     ],
                   )
                 ],
