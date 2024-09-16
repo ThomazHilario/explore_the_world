@@ -1,16 +1,8 @@
 # explore_the_world
 
-A new Flutter project.
+- Missão prática para desenvolver um app de vendas de pacotes de viagens em flutter
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## run Project:
+- É necessário ter todo o ambiente flutter preparado.
+- Clonar o projeto em sua máquina.
+- Ir até o arquivo de main, usar um dispositivo de sua preferência, e executar.
